@@ -11,8 +11,10 @@ from transformers import TrainingArguments
 
 from old_files.modeling_chatglm import ChatGLMForConditionalGeneration
 
-tokenizer = AutoTokenizer.from_pretrained("../../pretrained_models/chatglm-6b", trust_remote_code=True)
 
+tokenizer = AutoTokenizer.from_pretrained(
+        "THUDM/chatglm-6b", trust_remote_code=True
+    )
 
 @dataclass
 class FinetuneArguments:
@@ -122,7 +124,7 @@ def main():
 
     # init model
     model = ChatGLMForConditionalGeneration.from_pretrained(
-        "../../pretrained_models/chatglm-6b", load_in_8bit=True, trust_remote_code=True, device_map="auto"
+        "THUDM/chatglm-6b", load_in_8bit=True, trust_remote_code=True, device_map="auto"
     )
 
     model.gradient_checkpointing_enable()

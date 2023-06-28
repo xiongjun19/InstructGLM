@@ -12,6 +12,12 @@ RUN apt-get update && \
 
 RUN python -m pip install --upgrade pip
 RUN pip install pydantic --upgrade
-
-ADD  req_new.txt . 
+RUN pip install gpustats
+RUN pip install openpyxl
+RUN pip install deepspeed==0.9.2
+RUN pip install accelerate==0.19.0
+RUN pip install mpi4py==3.1.4
+RUN pip install flask 
+ADD  req_new.txt .
 RUN pip install -r req_new.txt
+RUN pip install --no-deps peft 
